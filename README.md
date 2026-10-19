@@ -2,7 +2,7 @@
 
 DeepSeek Harness 插件：一次调用，把 bing.com / baidu.com / sogou.com / so.com 四个引擎的**第一页**结果抓回来，去重合并成最多 ~100 条。
 
-[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/YOUR_GITHUB_NAME/dsh-search)
+[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/javaver/dsh-search)
 
 - 一个工具：`serp_search`
 - 只打第一页，不翻页
@@ -13,13 +13,13 @@ DeepSeek Harness 插件：一次调用，把 bing.com / baidu.com / sogou.com / 
 
 ```bash
 # 推荐：从 GitHub 源码安装（自动读取仓库里的 dsh.bundle.patch 并加进 profile）
-dsh plugin --profile web add github:YOUR_GITHUB_NAME/dsh-search
+dsh plugin --profile web add github:javaver/dsh-search
 
 # 或本地打包后装 tarball
 pnpm pack && dsh plugin --profile web add ./dsh-search-0.1.0.tgz
 ```
 
-桌面端也可以点「插件」页 → 安装 → 粘贴 `github:YOUR_GITHUB_NAME/dsh-search`。装完**重启 dsh**，工具列表里出现 `serp_search` 即成功。
+桌面端也可以点「插件」页 → 安装 → 粘贴 `github:javaver/dsh-search`。装完**重启 dsh**，工具列表里出现 `serp_search` 即成功。
 
 插件本身**零运行时依赖**，只用 Node 内置模块（`node:https` / `node:zlib` / `fetch`）；`ctx.tools` 由 DeepSeek Harness 提供。
 

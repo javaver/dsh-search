@@ -45,9 +45,9 @@
     },
     "install": {
       "preferred": "tarball",
-      "tarball": "https://github.com/YOUR_GITHUB_NAME/dsh-search/archive/refs/heads/main.tar.gz",
-      "zip": "https://github.com/YOUR_GITHUB_NAME/dsh-search/archive/refs/heads/main.zip",
-      "git": "https://github.com/YOUR_GITHUB_NAME/dsh-search.git"
+      "tarball": "https://github.com/javaver/dsh-search/archive/refs/heads/main.tar.gz",
+      "zip": "https://github.com/javaver/dsh-search/archive/refs/heads/main.zip",
+      "git": "https://github.com/javaver/dsh-search.git"
     }
   }
 }
