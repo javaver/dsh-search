@@ -1,0 +1,53 @@
+{
+  "name": "dsh-search",
+  "version": "0.1.0",
+  "description": "Multi-engine SERP search for DeepSeek Harness: bing.com / baidu.com / sogou.com / so.com, page 1 only, up to ~100 results per call.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-plugins",
+    "deepseek-harness",
+    "web-search",
+    "serp",
+    "bing",
+    "baidu",
+    "sogou",
+    "so360"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": ">=0.1.7-rc.1 <0.3.0-0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "install": {
+      "preferred": "tarball",
+      "tarball": "https://github.com/YOUR_GITHUB_NAME/dsh-search/archive/refs/heads/main.tar.gz",
+      "zip": "https://github.com/YOUR_GITHUB_NAME/dsh-search/archive/refs/heads/main.zip",
+      "git": "https://github.com/YOUR_GITHUB_NAME/dsh-search.git"
+    }
+  }
+}

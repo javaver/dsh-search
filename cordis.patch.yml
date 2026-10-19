@@ -1,0 +1,47 @@
+# dsh-search bundle layer.
+#
+# One row. Its `inject: [tools]` means the plugin mounts only where a tool
+# registry exists (every preset), and the tool itself is gated by
+# `config.enabled` so disabling is one edit in this file or the profile patch.
+- insert:
+    - id: dsh-search
+      name: dsh-search
+      inject: [tools]
+      config:
+        enabled: true
+        defaultSites:
+          - bing
+          - baidu
+          - sogou
+          - so360
+        maxResults: 100
+        engines:
+          bing:
+            enabled: true
+            count: 50
+            concurrency: 1
+            minGapMs: 700
+            cooldownMs: 60000
+          baidu:
+            enabled: true
+            rn: 50
+            concurrency: 1
+            minGapMs: 1200
+            cooldownMs: 180000
+          sogou:
+            enabled: true
+            num: 50
+            concurrency: 1
+            minGapMs: 1000
+            cooldownMs: 90000
+          so360:
+            enabled: true
+            rn: 50
+            concurrency: 1
+            minGapMs: 1200
+            cooldownMs: 90000
+        timeoutMs: 25000
+        retries: 1
+        fetchFavicons: true
+        dedupe: true
+        httpProxy: ''

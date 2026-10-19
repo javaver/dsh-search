@@ -1,0 +1,31 @@
+name: publish
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      # The plugin has no runtime dependencies and no build step: `npm pack`
+      # is only here to prove the published file set is complete.
+      - run: npm pack --dry-run
+      - name: verify plugin contract
+        run: |
+          node --input-type=module <<'EOF'
+          import { readFileSync } from 'node:fs';
+          const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
+          if (!pkg.dsh?.bundle?.patch) throw new Error('missing dsh.bundle.patch');
+          if (!/dsh-plugin/.test((pkg.keywords ?? []).join(','))) throw new Error('missing dsh-plugin keyword');
+          const mod = await import('./lib/index.js');
+          if (typeof mod.apply !== 'function') throw new Error('missing apply(ctx)');
+          if (!Array.isArray(mod.inject) || !mod.inject.includes('tools')) throw new Error('missing inject: [tools]');
+          console.log('contract ok:', mod.name, mod.inject.join(','));
+          EOF
